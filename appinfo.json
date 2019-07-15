@@ -1,0 +1,79 @@
+{
+    "arcgisRuntime": 0,
+    "capabilities": {
+        "audio": true,
+        "bluetooth": false,
+        "camera": true,
+        "location": true,
+        "microphone": false,
+        "network": true,
+        "storage": true
+    },
+    "deployment": {
+        "android": {
+        },
+        "arcgisRuntimeExtensionsLicense": "",
+        "arcgisRuntimeLicense": "",
+        "ios": {
+            "codeSignIdentity": ""
+        },
+        "macos": {
+            "codeSignIdentity": ""
+        }
+    },
+    "display": {
+        "desktop": {
+            "minimumHeight": 0,
+            "minimumWidth": 0
+        },
+        "phone": {
+            "landscape": false,
+            "portrait": true
+        },
+        "tablet": {
+            "landscape": true,
+            "portrait": true
+        }
+    },
+    "launchUrlSchemes": [
+        "arcgis-appstudio-player",
+        "arcgis-collector",
+        "arcgis-trek2there",
+        "arcgis-explorer",
+        "arcgis-navigator",
+        "arcgis-workforce"
+    ],
+    "mainFile": "Survey123.qml",
+    "projectFile": "Survey123.qmlproject",
+    "properties": {
+        "backgroundColor": "#efeeef",
+        "backgroundTextureImage": "images/brushedmetal.jpg",
+        "companyLogo": "images/logo-black.png",
+        "companyUrl": "",
+        "fontFamily": "Noto Sans",
+        "formBackgroundColor": "#f7f8f8",
+        "startBackgroundColor": "#31872e",
+        "startForegroundColor": "transparent",
+        "startOverlayImage": "images/start-overlay.png",
+        "textColor": "#4c4c4c",
+        "titleBarBackgroundColor": "#31872e",
+        "titleBarTextColor": "#ffffff"
+    },
+    "resources": {
+        "appIcon": "appicon.png",
+        "appIconBackgroundColor": "#3c8b09",
+        "launchImageBackgroundColor": "#31872e",
+        "launchImageOverlay": "launch-overlay.png"
+    },
+    "schema": "template/appschema.json",
+    "translations": {
+        "fileName": "Survey123App",
+        "path": "languages"
+    },
+    "type": "app",
+    "version": {
+        "major": 1,
+        "micro": 1,
+        "minor": 0
+    }
+}

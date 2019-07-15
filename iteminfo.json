@@ -1,0 +1,52 @@
+{
+    "access": "public",
+    "accessInformation": null,
+    "appCategories": [
+    ],
+    "avgRating": 0,
+    "banner": null,
+    "categories": [
+    ],
+    "commentsEnabled": true,
+    "created": 1537503992000,
+    "culture": "en-au",
+    "description": "\n<p style=' margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'>Survey123 (Template)</p>\n<p style='-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'><br /></p>\n<p style=' margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'>This template contains functionality that matches version 3.3 of Survey123. </p>\n<p style='-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'><br /></p>\n<p style=' margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'>Surveys, forms, polls, and questionnaires are really just the same thing: a list of questions. Questions, however, are one of the most powerful ways of gathering information for making decisions and taking action. </p>\n<p style='-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'><br /></p>\n<p style=' margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'>Survey123 for ArcGIS is a simple, lightweight, and intuitive data gathering solution that makes creating, sharing, and analyzing surveys possible in just three easy steps. </p>\n<p style='-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'><br /></p>",
+    "documentation": null,
+    "extent": [
+    ],
+    "groupDesignations": null,
+    "guid": null,
+    "industries": [
+    ],
+    "languages": [
+    ],
+    "largeThumbnail": null,
+    "licenseInfo": "\n<p style=' margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;'>The license agreement for this application is <a href='http://www.esri.com/legal/software-license'><span style=' text-decoration: underline; color:#0000ff;'>here.</span></a></p>",
+    "listed": false,
+    "modified": 1550808427000,
+    "numComments": 4,
+    "numRatings": 0,
+    "numViews": 763,
+    "orgId": "2U3NfasNQ9o9LkLt",
+    "properties": null,
+    "proxyFilter": null,
+    "scoreCompleteness": 96,
+    "screenshots": [
+    ],
+    "size": 4636935,
+    "snippet": "Data collection on any device for any purpose",
+    "spatialReference": null,
+    "thumbnail": "thumbnail/thumbnail.png",
+    "title": "3.3 Compass",
+    "type": "Native Application",
+    "typeKeywords": [
+        "API_QML",
+        "App",
+        "Application",
+        "AppStudio",
+        "Configuration",
+        "Native",
+        "qml"
+    ],
+    "url": null
+}
