@@ -19,6 +19,7 @@ import QtQuick 2.9
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import QtMultimedia 5.5
+import QtSensors 5.0 //compass bearing
 
 import ArcGIS.AppFramework 1.0
 import ArcGIS.AppFramework.Controls 1.0
@@ -58,6 +59,9 @@ RowLayout {
     readonly property bool isBarcode: binding.type === binding.kTypeBarcode
     readonly property bool isReadOnly: !editable || binding.isReadOnly
     readonly property bool showSpinners: appearance.indexOf("spinner") >= 0 && !isReadOnly
+    //compass bearing
+    readonly property bool showBearing : appearance.indexOf("bearing") >= 0
+
     property real spinnerScale: 2
     property real spinnerMargin: 15 * AppFramework.displayScaleFactor
 
@@ -92,6 +96,9 @@ RowLayout {
                 keypadLoader = numbersKeypad.createObject(parent);
             } else if (appearance.indexOf("calculator") >= 0) {
                 keypadLoader = calculatorKeypad.createObject(parent);
+            //compass bearing
+            } else if (appearance.indexOf("bearing") >= 0) {
+                keypadLoader = bearingKeypad.createObject(parent);
             }
         }
 
@@ -169,8 +176,9 @@ RowLayout {
         Layout.rightMargin: spinnerMargin
 
         sourceComponent: spinnerButtonComponent
-        active: showSpinners
-        visible: showSpinners
+        //compass bearing
+        active: showSpinners || showBearing
+        visible: showSpinners || showBearing
 
         onLoaded: {
             item.step = -1;
@@ -279,8 +287,8 @@ RowLayout {
             if (bindElement["@calculate"]) {
 
             }
-
-            if (showSpinners) {
+            //compass bearing
+            if (showSpinners || showBearing) {
                 horizontalAlignment = TextInput.AlignHCenter;
             }
         }
@@ -489,8 +497,8 @@ RowLayout {
         Layout.leftMargin: spinnerMargin
 
         sourceComponent: spinnerButtonComponent
-        active: showSpinners
-        visible: showSpinners
+        active: showSpinners || showBearing
+        visible: showSpinners || showBearing
     }
 
     Component {
@@ -624,7 +632,97 @@ RowLayout {
     }
 
     //--------------------------------------------------------------------------
+    //compass Bearing
+    Component {
+        id: bearingKeypad
 
+        Loader {
+            property bool showKeypad: true
+
+            width: parent.width
+            height: visible ? (textField.height + AppFramework.displayScaleFactor * 5) * 4 * 1.2  : 0 //150 * AppFramework.displayScaleFactor * xform.style.scale : 0
+            active: true //textField.activeFocus && showKeypad
+            visible: true //active
+
+
+            onActiveChanged: {
+                if (active) {
+                    Qt.inputMethod.hide();
+                }
+            }
+
+            onLoaded: {
+                xform.ensureItemVisible(inputLayout.parent.parent);
+            }
+
+            sourceComponent: Item {
+
+                Rectangle{
+                    id: myCanvas
+                    anchors.fill: parent
+                    Image {
+                        id: bk
+                        fillMode: Image.PreserveAspectFit
+                        height: 150  * AppFramework.displayScaleFactor
+                        width: 150  * AppFramework.displayScaleFactor
+                        anchors.centerIn: parent
+                        source: "images/BK_Mono.png"
+                    }
+                    Image {
+                        id: north
+                        fillMode: Image.PreserveAspectFit
+                        height: 150  * AppFramework.displayScaleFactor
+                        width: 150  * AppFramework.displayScaleFactor
+                        anchors.centerIn: parent
+                        source: "images/North.png"
+
+                        rotation: textField.text
+                    }
+                    Compass {
+                        id: myCompass
+                        active: false
+                        onReadingChanged: {
+                            textField.text = myCompass.reading.azimuth
+                        }
+                    }
+                    MouseArea{
+                        anchors.fill: myCanvas
+                        onClicked: {
+                            var myX = mouseX
+                            if (myX>myCanvas.width/2){
+                                myX=mouseX-(myCanvas.width/2)
+                            }else{
+                                myX=((myCanvas.width/2) - mouseX)*-1
+                            }
+
+                            var myY = mouseY
+                            if (myY>myCanvas.height/2){
+                                myY=(mouseY-(myCanvas.height/2))*-1
+                            }else{
+                                myY=(myCanvas.height/2)-mouseY
+                            }
+                            var angleArit = Math.atan2(myY,myX)* (180/Math.PI)
+                            var angleGeo = (450-angleArit) % 360
+
+                            if((binding["@type"] === "int")){
+                                textField.text = Math.round(angleGeo)
+                            }else{
+                                textField.text = Math.round(angleGeo*100)/100
+                            }
+                        }
+                        onPressAndHold: {
+                            myCompass.active=true
+                        }
+                        onReleased: {
+                            myCompass.active=false
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //-------------------------------------------------------------------------
     Component {
         id: calculateButtonComponent
 
